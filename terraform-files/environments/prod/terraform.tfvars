@@ -1,0 +1,6 @@
+environment        = "production"
+vpc_cidr           = "10.0.0.0/16"
+public_subnet_cidr = "10.0.0.0/24"
+ami                = "ami-02b8269d5e85954ef"
+instance_type      = "t3.micro"
+key_name = "mykey"
