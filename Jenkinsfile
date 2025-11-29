@@ -6,7 +6,7 @@ pipeline{
         stage("checking"){
             steps{
                 script{
-                    sayHello()
+                    hello()
                 }
             }
         }
