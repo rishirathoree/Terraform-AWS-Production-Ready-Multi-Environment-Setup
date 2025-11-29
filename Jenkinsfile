@@ -1,17 +1,38 @@
 @Library('shared-groovy') _
 
-pipeline{
-    agent {label 'jenkins-dev-agent'}
-    stages{
-        stage('Build'){
-            steps{
-                sh "docker build -t rishirathoree/react-app-new:latest -f dockerfiles/react.dockerfile ."
-                withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
-                    sh 'docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD'
+pipeline {
+    agent { label 'jenkins-dev-agent' }
+
+    environment {
+        IMAGE_NAME = "rishirathoree/react-app-new"
+        IMAGE_TAG = "latest"
+        DOCKERFILE_PATH = "dockerfiles/react.dockerfile"
+    }
+
+    stages {
+        stage('Build & Push Docker Image') {
+            steps {
+                withCredentials([
+                    usernamePassword(
+                        credentialsId: 'dockerhub',
+                        usernameVariable: 'DOCKER_USERNAME',
+                        passwordVariable: 'DOCKER_PASSWORD'
+                    )
+                ]) {
+                    sh """
+                        echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
+                        docker build -t ${IMAGE_NAME}:${IMAGE_TAG} -f ${DOCKERFILE_PATH} .
+                        docker push ${IMAGE_NAME}:${IMAGE_TAG}
+                    """
                 }
-                sh "docker push rishirathoree/react-app-new:latest"
             }
         }
     }
-}
 
+    post {
+        always {
+            sh "docker logout || true"
+            sh "docker system prune -f || true"
+        }
+    }
+}
