@@ -19,11 +19,11 @@ pipeline {
                         passwordVariable: 'DOCKER_PASSWORD'
                     )
                 ]) {
-                    sh """
+                    sh '''
                         docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
                         docker build -t ${IMAGE_NAME}:${IMAGE_TAG} -f ${DOCKERFILE_PATH} .
                         docker push ${IMAGE_NAME}:${IMAGE_TAG}
-                    """
+                    '''
                 }
             }
         }
