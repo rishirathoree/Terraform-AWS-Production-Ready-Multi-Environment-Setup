@@ -27,7 +27,6 @@ http://65.0.102.29:8080/github-webhook/
 
 ==================
 
-
 git add .
 git commit -m "added new pages"
 git push origin main
