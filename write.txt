@@ -16,13 +16,14 @@ cd ~/.ssh
 
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword  
 
-
 http://65.0.102.29:8080/
 
 admin
 98dacc817fc74fe1abc79cd3d026872e
 
 agent label : jenkins-dev-agent
+
+http://65.0.102.29:8080/github-webhook/
 
 ==================
 
