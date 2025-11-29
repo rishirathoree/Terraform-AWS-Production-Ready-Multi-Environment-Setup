@@ -76,6 +76,12 @@ resource "aws_security_group" "security-group" {
         protocol    = "tcp"
         cidr_blocks = ["0.0.0.0/0"]
     }
+    ingress {
+        from_port   = 9000
+        to_port     = 9000
+        protocol    = "tcp"
+        cidr_blocks = ["0.0.0.0/0"]
+    }
 }
 
 resource "aws_key_pair" "mykey-pair" {

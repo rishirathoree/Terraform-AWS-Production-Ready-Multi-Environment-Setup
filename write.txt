@@ -1,25 +1,26 @@
 dev 
 
 Jenkins Server
-13.201.169.11
+65.0.102.29
 
 Agent
-3.108.222.106
+65.2.9.21
 
 Jenkins Agent
-ssh -i mykey ubuntu@13.201.169.11
+ssh -i mykey ubuntu@65.0.102.29
 
 Agent
-ssh -i mykey ubuntu@3.108.222.106
+ssh -i mykey ubuntu@65.2.9.21
 
 cd ~/.ssh
 
-sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword  
 
 
-http:13.201.169.11:8080/
+http://65.0.102.29:8080/
+
 admin
-a3c94c704f82489faa1ad68cfc3f4fe4
+98dacc817fc74fe1abc79cd3d026872e
 
 agent label : jenkins-dev-agent
 
