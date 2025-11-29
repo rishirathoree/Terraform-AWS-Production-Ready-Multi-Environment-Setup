@@ -28,11 +28,4 @@ pipeline {
             }
         }
     }
-
-    post {
-        always {
-            sh "docker logout || true"
-            sh "docker system prune -f || true"
-        }
-    }
 }
