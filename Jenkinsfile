@@ -2,28 +2,11 @@
 
 pipeline {
     agent { label 'jenkins-dev-agent' }
-
-    environment {
-        IMAGE_NAME = "rishirathoree/react-app-new"
-        IMAGE_TAG = "latest"
-        DOCKERFILE_PATH = "dockerfiles/react.dockerfile"
-    }
-
     stages {
         stage('Build & Push Docker Image') {
             steps {
-                withCredentials([
-                    usernamePassword(
-                        credentialsId: 'dockerhub',
-                        usernameVariable: 'DOCKER_USERNAME',
-                        passwordVariable: 'DOCKER_PASSWORD'
-                    )
-                ]) {
-                    sh '''
-                        docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-                        docker build -t ${IMAGE_NAME}:${IMAGE_TAG} -f ${DOCKERFILE_PATH} .
-                        docker push ${IMAGE_NAME}:${IMAGE_TAG}
-                    '''
+                script{
+                    dockerbuild('rishirathoree/react-app-new','latest','rishirathoree','dockerfiles/react.dockerfile')
                 }
             }
         }
