@@ -1,29 +1,32 @@
 dev 
 
 Jenkins Server
-65.0.102.29
+65.1.126.170
 
 Agent
-65.2.9.21
+65.1.167.126
 
-Jenkins Agent
-ssh -i mykey ubuntu@65.0.102.29
+Jenkins Server
+ssh -i mykey ubuntu@65.1.126.170
 
 Agent
-ssh -i mykey ubuntu@65.2.9.21
+ssh -i mykey ubuntu@65.1.167.126
 
 cd ~/.ssh
 
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword  
 
-http://65.0.102.29:8080/
+http://65.1.126.170:8080/
 
 admin
-98dacc817fc74fe1abc79cd3d026872e
+e53795dd06fb456dac31fce44c5cab57
 
 agent label : jenkins-dev-agent
 
-http://65.0.102.29:8080/github-webhook/
+http://65.1.126.170:8080/github-webhook/
+
+Library Shared Name : shared-groovy
+
 
 ==================
 
