@@ -21,4 +21,11 @@ http:13.201.169.11:8080/
 admin
 a3c94c704f82489faa1ad68cfc3f4fe4
 
+agent label : jenkins-dev-agent
+
 ==================
+
+
+git add .
+git commit -m "added new pages"
+git push origin main
