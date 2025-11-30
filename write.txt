@@ -1,35 +1,38 @@
 dev 
 
 Jenkins Server
-13.235.76.64
+65.0.107.22
 
 Agent
-43.204.214.183
+3.7.253.43
 
 Jenkins Server
-ssh -i mykey ubuntu@13.235.76.64
+ssh -i mykey ubuntu@65.0.107.22
 
 Agent
-ssh -i mykey ubuntu@43.204.214.183
+ssh -i mykey ubuntu@3.7.253.43
 
 cd ~/.ssh
 
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword  
 
-http://13.235.76.64:8080/
+http://65.0.107.22:8080/
 
 admin
 85f7d6c6a3cb4882803ad1a3d5fcdbda
 
 agent label : jenkins-dev-agent
 
-http://13.235.76.64:8080/github-webhook/
+http://65.0.107.22:8080/github-webhook/
 
 Library Shared Name : shared-groovy
 
+docker run -d --name sonar -p 9000:9000 sonarqube:latest
 
 ==================
 ssh-keygen -t rsa -b 4096 -C "jenkins-key" -f ~/.ssh/jenkins
 ==================
 
- 
+ git add .
+ git commit -m "added changes"
+ git push origin main

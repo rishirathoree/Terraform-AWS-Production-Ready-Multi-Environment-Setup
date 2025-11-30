@@ -92,7 +92,7 @@ resource "aws_key_pair" "mykey-pair" {
 
 resource "aws_instance" "jenkins-server" {
     ami           = var.ami # Example AMI ID, replace with a valid one for your region
-    instance_type = var.instance_type
+    instance_type = var.instance_type_jenkins
     key_name = var.key_name
     subnet_id     = aws_subnet.public-subnet.id
     security_groups = [aws_security_group.security-group.id]
@@ -105,7 +105,7 @@ resource "aws_instance" "jenkins-server" {
 
 resource "aws_instance" "jenkins-agent" {
     ami           = var.ami # Example AMI ID, replace with a valid one for your region
-    instance_type = var.instance_type
+    instance_type = var.instance_type_agent
     key_name = var.key_name
     subnet_id     = aws_subnet.public-subnet.id
     security_groups = [aws_security_group.security-group.id]
