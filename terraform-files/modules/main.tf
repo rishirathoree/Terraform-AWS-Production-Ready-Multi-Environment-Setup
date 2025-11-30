@@ -103,6 +103,22 @@ resource "aws_instance" "jenkins-server" {
     user_data = file("../../../scripts/jenkins_server_data.sh")
 }
 
+resource "aws_ebs_volume" "jenkins_data_volume" {
+  size              = 30
+  availability_zone = aws_instance.jenkins-server.availability_zone
+
+  tags = {
+    Name = "${var.environment}-jenkins_data_volume"
+  }
+}
+
+resource "aws_volume_attachment" "jenkins_data_attachment" {
+  device_name = "/dev/sdh"
+  volume_id   = aws_ebs_volume.jenkins_data_volume.id
+  instance_id = aws_instance.jenkins-server.id
+}
+
+
 resource "aws_instance" "jenkins-agent" {
     ami           = var.ami # Example AMI ID, replace with a valid one for your region
     instance_type = var.instance_type_agent
