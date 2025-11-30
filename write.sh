@@ -1,36 +1,36 @@
 dev 
 
 Jenkins Server
-43.204.231.118
+15.206.148.19
 
 Agent
-13.203.159.153  
+13.233.100.242
 
 Jenkins Server
-ssh -i mykey ubuntu@43.204.231.118
+ssh -i mykey ubuntu@15.206.148.19
 
 Agent
-ssh -i mykey ubuntu@13.203.159.153
+ssh -i mykey ubuntu@13.233.100.242
 
 cd ~/.ssh
 
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword  
 
-http://43.204.231.118:8080/
+http://15.206.148.19:8080/
 
 admin
-649825c69a494592b7863e5008f5c13c
+289a1d585fb24e3f95245264bb4aa3af
 
 agent label : jenkins-dev-agent
 
-http://43.204.231.118:8080/github-webhook/
+http://15.206.148.19:8080/github-webhook/
 
 Library Shared Name : shared-groovy
 
-http://13.203.159.153:5173
+http://13.233.100.242:5173
 
 docker run -d --name sonar -p 9000:9000 sonarqube:latest
-http://43.204.231.118:9000/
+http://15.206.148.19:9000/
 
 ==================
 ssh-keygen -t rsa -b 4096 -C "jenkins-key" -f ~/.ssh/jenkins
@@ -43,4 +43,5 @@ ssh-keygen -t rsa -b 4096 -C "jenkins-key" -f ~/.ssh/jenkins
 # Add Duckerhub Credential in Jenkins
 # Add Github Repo
 # Add Jenkins Server Private Key In Credential to access the jenkins agent
-# Add Github Webhook in Jenkins to jenkins server ip http://yourip/github-webhooks/
+# Add Github Webhook in Jenkins to jenkins server ip http://yourip:jenkinport/github-webhooks/
+# Add Stage View Plugin
