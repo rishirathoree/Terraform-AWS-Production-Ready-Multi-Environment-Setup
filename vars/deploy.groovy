@@ -1,3 +1,3 @@
-def call(String imageName,String tag, String userName) {
+def call() {
     sh "docker compose up -d"
 }
