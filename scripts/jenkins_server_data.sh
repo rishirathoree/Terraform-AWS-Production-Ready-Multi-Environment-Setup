@@ -19,3 +19,11 @@ sudo apt -y install jenkins
 
 # Check Password
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+
+
+sudo ufw allow 8080
+sudo ufw allow 80
+sudo ufw allow 22
+sudo ufw allow 9000
+sudo ufw allow 5173
+sudo ufw enable

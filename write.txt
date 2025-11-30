@@ -1,38 +1,35 @@
 dev 
 
 Jenkins Server
-65.1.126.170
+13.235.76.64
 
 Agent
-65.1.167.126
+43.204.214.183
 
 Jenkins Server
-ssh -i mykey ubuntu@65.1.126.170
+ssh -i mykey ubuntu@13.235.76.64
 
 Agent
-ssh -i mykey ubuntu@65.1.167.126
+ssh -i mykey ubuntu@43.204.214.183
 
 cd ~/.ssh
 
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword  
 
-http://65.1.126.170:8080/
+http://13.235.76.64:8080/
 
 admin
-e53795dd06fb456dac31fce44c5cab57
+85f7d6c6a3cb4882803ad1a3d5fcdbda
 
 agent label : jenkins-dev-agent
 
-http://65.1.126.170:8080/github-webhook/
+http://13.235.76.64:8080/github-webhook/
 
 Library Shared Name : shared-groovy
 
 
 ==================
-ssh-keygen -t rsa -b 4096 -C "jenkins-key"
+ssh-keygen -t rsa -b 4096 -C "jenkins-key" -f ~/.ssh/jenkins
 ==================
 
-
-git add .
-git commit -m "added new pages"
-git push origin main
+ 

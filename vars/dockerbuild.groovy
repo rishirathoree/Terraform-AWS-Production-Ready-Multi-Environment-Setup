@@ -3,4 +3,5 @@ def call(String imageName,String tag, String userName, String filePath) {
         sh "docker login -u $USERNAME -p $PASSWORD"
     }
     sh "docker build -t ${imageName}:${tag} -f ${filePath} ."
+    sh "docker push ${userName}/${imageName}:${tag}"
 }
