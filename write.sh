@@ -4,7 +4,7 @@ Jenkins Server
 43.204.231.118
 
 Agent
-13.203.159.153
+13.203.159.153  
 
 Jenkins Server
 ssh -i mykey ubuntu@43.204.231.118
@@ -39,3 +39,8 @@ ssh-keygen -t rsa -b 4096 -C "jenkins-key" -f ~/.ssh/jenkins
  git add .
  git commit -m "added changes"
  git push origin main
+
+# Add Duckerhub Credential in Jenkins
+# Add Github Repo
+# Add Jenkins Server Private Key In Credential to access the jenkins agent
+# Add Github Webhook in Jenkins to jenkins server ip http://yourip/github-webhooks/
