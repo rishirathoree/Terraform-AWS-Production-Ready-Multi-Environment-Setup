@@ -75,9 +75,6 @@ const Form: React.FC = () => {
     return (
         <div className="flex items-center justify-center">
             <form className="sm:mx-auto sm:max-w-7xl">
-                <h3 className="text-xl font-semibold text-foreground">
-                    Create new design workspace
-                </h3>
                 <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
                     <div className="mt-6 lg:col-span-7">
                         <div className="space-y-4 md:space-y-6">
