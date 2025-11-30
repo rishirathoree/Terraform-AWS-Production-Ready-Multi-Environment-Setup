@@ -1,6 +1,8 @@
 import React, { Suspense, lazy } from "react";
 import { Route, Routes } from "react-router";
-import PrivateRoutes from "./lib/private-routes";
+
+const PrivateRoutes = lazy(() => import("./lib/private-routes"));
+const PublicRoutes = lazy(() => import("./lib/public-routes"));
 const CreateWorkspace = lazy(() => import("./pages/create-workspace/create-workspace-page"));
 const Workspace = lazy(() => import("./pages/workspace/workspace-page"));
 const Login04 = lazy(() => import("./pages/login/login-page"));
@@ -13,10 +15,11 @@ const App: React.FC = () => {
   return (
     <Suspense fallback={<Suspense01 />}>
       <Routes>
+        <Route element={<PublicRoutes />}>
         <Route path="/login" element={<Login04 />} />
         <Route path="/create-workspace" element={<CreateWorkspace />} />
+        </Route>
         <Route element={<PrivateRoutes />}>
-          {/* Place your routes here which you want to protect */}
           <Route path="/" element={<Home />} />
           <Route path="*" element={<Home />} />
           <Route path="/plans-settings" element={<Workspace />} />
