@@ -28,3 +28,15 @@ sudo usermod -aG docker $USER
 
 # Check Password
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+
+# Install Sonarqube
+docker run -d --name sonar -p 9000:9000 sonarqube:latest
+
+# Install Trivy
+sudo apt-get -y update
+sudo apt-get -y install wget apt-transport-https gnupg -y
+wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo apt-key add -
+echo "deb https://aquasecurity.github.io/trivy-repo/deb focal main" | sudo tee -a /etc/apt/sources.list.d/trivy.list
+sudo apt-get -y update
+sudo apt-get install trivy -y
+
