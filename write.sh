@@ -46,3 +46,4 @@ ssh-keygen -t rsa -b 4096 -C "jenkins-key" -f ~/.ssh/jenkins
 # Add Github Webhook in Jenkins to jenkins server ip http://yourip:jenkinport/github-webhooks/
 # Add Stage View Plugin
 # Add Github Branch Source Plugin
+
