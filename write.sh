@@ -19,7 +19,7 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 http://13.203.76.60:8080/
 
 admin
-289a1d585fb24e3f95245264bb4aa3af
+4f088487a5a54eb9bb3948f4171402c6
 
 agent label : jenkins-dev-agent
 
@@ -46,4 +46,5 @@ ssh-keygen -t rsa -b 4096 -C "jenkins-key" -f ~/.ssh/jenkins
 # Add Github Webhook in Jenkins to jenkins server ip http://yourip:jenkinport/github-webhooks/
 # Add Stage View Plugin
 # Add Github Branch Source Plugin
+
 
