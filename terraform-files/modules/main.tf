@@ -112,13 +112,14 @@ resource "aws_ebs_volume" "jenkins_data_volume" {
   }
 }
 
-resource "aws_volume_attachment" "jenkins_data_attachment" {
-  device_name = "/dev/sdh"
-  volume_id   = aws_ebs_volume.jenkins_data_volume.id
-  instance_id = aws_instance.jenkins-server.id
-}
+# resource "aws_volume_attachment" "jenkins_data_attachment" {
+#   device_name = "/dev/sdh"
+#   volume_id   = aws_ebs_volume.jenkins_data_volume.id
+#   instance_id = aws_instance.jenkins-server.id
+# }
 
-resource "aws_instance" "dev-webserver" {
+
+resource "aws_instance" "jenkins-agent" {
     ami           = var.ami # Example AMI ID, replace with a valid one for your region
     instance_type = var.instance_type_agent
     key_name = var.key_name
@@ -126,35 +127,7 @@ resource "aws_instance" "dev-webserver" {
     security_groups = [aws_security_group.security-group.id]
     associate_public_ip_address = true
     tags = {
-        Name = "dev-webserver"
+        Name = "${var.environment}-jenkins-agent"
     }
     user_data = file("../../../scripts/jenkins_server_data.sh")
 }
-
-resource "aws_instance" "staging-webserver" {
-    ami           = var.ami # Example AMI ID, replace with a valid one for your region
-    instance_type = var.instance_type_agent
-    key_name = var.key_name
-    subnet_id     = aws_subnet.public-subnet.id
-    security_groups = [aws_security_group.security-group.id]
-    associate_public_ip_address = true
-    tags = {
-        Name = "staging-webserver"
-    }
-    user_data = file("../../../scripts/jenkins_server_data.sh")
-}
-
-
-resource "aws_instance" "prod-webserver" {
-    ami           = var.ami # Example AMI ID, replace with a valid one for your region
-    instance_type = var.instance_type_agent
-    key_name = var.key_name
-    subnet_id     = aws_subnet.public-subnet.id
-    security_groups = [aws_security_group.security-group.id]
-    associate_public_ip_address = true
-    tags = {
-        Name = "prod-webserver"
-    }
-    user_data = file("../../../scripts/jenkins_server_data.sh")
-}
-
