@@ -103,12 +103,12 @@ const dashboardRoutes: Route[] = [
     isDisabled: true,
     title: "Usage Billing",
     icon: <PieChart className="size-12" />,
-    link: "#",
+    link: "/usage-billing/meters",
     subs: [
       {
-    isDisabled: true,
+    isDisabled: false,
         title: "Meters",
-        link: "#",
+        link: "/usage-billing/meters",
         isSomethingNew : false,
 
         icon: <PieChart className="size-12" />,

@@ -1,5 +1,6 @@
 import React, { Suspense, lazy } from "react";
 import { Route, Routes } from "react-router";
+import MetersPage from "./pages/meters/meters-page";
 
 const PrivateRoutes = lazy(() => import("./lib/private-routes"));
 const PublicRoutes = lazy(() => import("./lib/public-routes"));
@@ -23,6 +24,7 @@ const App: React.FC = () => {
           <Route path="/" element={<Home />} />
           <Route path="*" element={<Home />} />
           <Route path="/plans-settings" element={<Workspace />} />
+          <Route path="/usage-billing/meters" element={<MetersPage />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/catalogue" element={<Catalouge />} />
         </Route>
